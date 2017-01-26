@@ -3,6 +3,9 @@ Example of using [Velocity scroll command](http://velocityjs.org/#scroll) in Rea
 
 The repo is a result from the following Stack Overflow contribution: [velocity-react - animating scrollTop after component update](http://stackoverflow.com/questions/35566357/velocity-react-animating-scrolltop-after-component-update).
 
+# Demo
+1. https://jordan-enev.github.io/react-velocity-scroll/
+
 # Installation
 1. `npm install`
 1. `npm start`
