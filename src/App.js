@@ -1,10 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import MessagesList from './MessagesList';
+
+const style = {
+    textAlign: 'center'
+};
 
 class App extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {  messages: [], text: '' }
+
+        this.state = {
+            /**
+             * @type Array - Store sent messages
+             */
+            messages: [],
+            /**
+             * @type String - Store the input value.
+             * It's reset on message sent
+             */
+            text: ''
+        }
     }
 
     handleOnChange(e) {
@@ -15,11 +30,18 @@ class App extends React.Component{
     handleOnKeyPress(e) {
         const text = e.target.value;
 
+        // Send the message on `Enter` button press
         if (e.key === 'Enter') {
             this.sendMessage(text);
         }
     }
 
+    /**
+     * Add the message to the state and reset the value
+     * of the input
+     *
+     * @param String text - Message text
+     */
     sendMessage(text) {
         const { messages } =  this.state;
         const message = { date: new Date(), text };
@@ -35,18 +57,16 @@ class App extends React.Component{
 
         return <div style={style}>
             <h1>Please enter your text message:</h1>
+
             <input
                 value={text}
                 placeholder="Press Enter for sending"
                 onChange={this.handleOnChange.bind(this)}
                 onKeyPress={this.handleOnKeyPress.bind(this)} />
-            <MessagesList messages={this.state.messages} />
+
+            <MessagesList messages={messages} />
         </div>
     }
 }
-
-const style = {
-    textAlign: 'center'
-};
 
 export default App;
